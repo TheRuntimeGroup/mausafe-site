@@ -1,7 +1,5 @@
-import { Backdrop } from "@/components/landing/Backdrop";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { Marquee } from "@/components/landing/Marquee";
 import { Concept } from "@/components/landing/Concept";
 import { Features } from "@/components/landing/Features";
 import { Showcase } from "@/components/landing/Showcase";
@@ -13,21 +11,17 @@ import { Footer } from "@/components/landing/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <Backdrop />
-      <div className="relative z-10">
-        <Navbar />
-        <main>
-          <Hero />
-          <Marquee />
-          <Concept />
-          <Features />
-          <Showcase />
-          <Team />
-          <Faq />
-          <Outro />
-        </main>
-        <Footer />
-      </div>
+      <Navbar />
+      <main>
+        <Hero />
+        <Concept />
+        <Features />
+        <Showcase />
+        <Team />
+        <Faq />
+        <Outro />
+      </main>
+      <Footer />
     </div>
   );
 };

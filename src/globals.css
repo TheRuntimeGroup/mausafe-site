@@ -4,43 +4,43 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 185 38% 11%;
+    --background: 0 0% 99%;
+    --foreground: 180 18% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 185 38% 11%;
+    --card-foreground: 180 18% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 185 38% 11%;
+    --popover-foreground: 180 18% 9%;
 
     --primary: 175 77% 26%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 174 45% 95%;
-    --secondary-foreground: 175 77% 22%;
+    --secondary: 170 35% 95%;
+    --secondary-foreground: 175 70% 20%;
 
-    --muted: 210 25% 95%;
-    --muted-foreground: 200 15% 43%;
+    --muted: 40 10% 95%;
+    --muted-foreground: 180 5% 40%;
 
-    --accent: 174 45% 94%;
-    --accent-foreground: 175 77% 22%;
+    --accent: 170 35% 94%;
+    --accent-foreground: 175 70% 20%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 16% 90%;
-    --input: 200 16% 90%;
+    --border: 40 8% 89%;
+    --input: 40 8% 89%;
     --ring: 175 77% 26%;
 
-    --radius: 1.5rem;
+    --radius: 1rem;
 
-    --sidebar-background: 210 40% 98%;
-    --sidebar-foreground: 185 38% 11%;
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 180 18% 9%;
     --sidebar-primary: 175 77% 26%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 174 45% 94%;
-    --sidebar-accent-foreground: 175 77% 22%;
-    --sidebar-border: 200 16% 90%;
+    --sidebar-accent: 170 35% 94%;
+    --sidebar-accent-foreground: 175 70% 20%;
+    --sidebar-border: 40 8% 89%;
     --sidebar-ring: 175 77% 26%;
   }
 
@@ -103,7 +103,15 @@
   h3,
   h4 {
     font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
+  }
+
+  ::selection {
+    background: rgba(15, 118, 110, 0.16);
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
   }
 }
 
@@ -120,104 +128,49 @@
     text-wrap: balance;
   }
 
-  /* Scroll reveal */
   .reveal {
     opacity: 0;
-    transform: translateY(32px);
+    transform: translateY(24px);
     transition:
-      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-      filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform, filter;
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
   }
 
   .reveal.from-left {
-    transform: translateX(-44px);
+    transform: translateX(-28px);
   }
 
   .reveal.from-right {
-    transform: translateX(44px);
+    transform: translateX(28px);
   }
 
   .reveal.scale-in {
-    transform: scale(0.94);
-  }
-
-  .reveal.tilt-in {
-    transform: perspective(900px) rotateX(12deg) translateY(32px);
-  }
-
-  .reveal-blur {
-    filter: blur(14px);
+    transform: scale(0.96);
   }
 
   .reveal.is-visible {
     opacity: 1;
     transform: none;
-    filter: blur(0);
-  }
-
-  /* Motion */
-  .animate-float {
-    animation: mausafe-float 6s ease-in-out infinite;
   }
 
   .animate-float-slow {
     animation: mausafe-float 9s ease-in-out infinite;
   }
 
-  .animate-marquee {
-    animation: mausafe-marquee 28s linear infinite;
-  }
-
   .animate-radar {
-    animation: mausafe-radar 3.2s linear infinite;
+    animation: mausafe-radar 3.6s linear infinite;
   }
 
   .animate-pulse-ring {
     animation: mausafe-pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  .animate-spin-slow {
-    animation: mausafe-spin 26s linear infinite;
-  }
-
-  .animate-spin-slower {
-    animation: mausafe-spin 46s linear infinite;
-  }
-
-  .animate-spin-reverse {
-    animation: mausafe-spin 36s linear infinite reverse;
-  }
-
-  .animate-aurora-a {
-    animation: mausafe-aurora-a 24s ease-in-out infinite;
-  }
-
-  .animate-aurora-b {
-    animation: mausafe-aurora-b 28s ease-in-out infinite;
-  }
-
-  .animate-aurora-c {
-    animation: mausafe-aurora-c 32s ease-in-out infinite;
-  }
-
-  .bg-grid {
-    background-image:
-      linear-gradient(to right, rgba(15, 118, 110, 0.07) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(15, 118, 110, 0.07) 1px, transparent 1px);
-    background-size: 44px 44px;
-  }
-
   .bg-grid-dark {
     background-image:
-      linear-gradient(to right, rgba(153, 246, 228, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(153, 246, 228, 0.08) 1px, transparent 1px);
-    background-size: 44px 44px;
-  }
-
-  .preserve-3d {
-    transform-style: preserve-3d;
+      linear-gradient(to right, rgba(153, 246, 228, 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(153, 246, 228, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }
 
@@ -227,16 +180,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-14px);
-  }
-}
-
-@keyframes mausafe-marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
+    transform: translateY(-10px);
   }
 }
 
@@ -261,60 +205,14 @@
   }
 }
 
-@keyframes mausafe-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes mausafe-aurora-a {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(7%, 5%, 0) scale(1.12);
-  }
-}
-
-@keyframes mausafe-aurora-b {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1.08);
-  }
-  50% {
-    transform: translate3d(-6%, -4%, 0) scale(0.95);
-  }
-}
-
-@keyframes mausafe-aurora-c {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-5%, 7%, 0) scale(1.1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .reveal,
-  .reveal-blur,
-  .animate-float,
   .animate-float-slow,
-  .animate-marquee,
   .animate-radar,
-  .animate-pulse-ring,
-  .animate-spin-slow,
-  .animate-spin-slower,
-  .animate-spin-reverse,
-  .animate-aurora-a,
-  .animate-aurora-b,
-  .animate-aurora-c {
+  .animate-pulse-ring {
     animation: none !important;
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
-    filter: none !important;
   }
 }

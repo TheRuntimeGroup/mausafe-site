@@ -25,28 +25,28 @@ const faqs = [
   },
   {
     q: "Is MauSafe available to download?",
-    a: "Not yet. MauSafe is currently a student concept from Polytechnics Mauritius, built by the DEAD SIGNAL team. The team is working to bring the prototype to life.",
+    a: "Not yet. MauSafe is currently a student concept from Polytechnics Mauritius, built by the DEAD SIGNAL team for a 24-hour hackathon. The team is working to bring the prototype to life.",
   },
 ];
 
 export function Faq() {
   return (
-    <section id="faq" className="py-16 sm:py-24">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <Reveal className="text-center">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
-            08 · FAQ
+    <section id="faq" className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-3xl px-5 sm:px-8">
+        <Reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
+            08 — FAQ
           </p>
-          <h2 className="text-balance mt-4 text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
             Questions, answered
           </h2>
         </Reveal>
 
-        <Reveal delay={120} className="mt-10">
+        <Reveal delay={100}>
           <Accordion
             type="single"
             collapsible
-            className="rounded-[1.75rem] border border-border bg-white px-6 shadow-sm"
+            className="mt-8 rounded-2xl border border-border bg-background px-5 sm:px-6"
           >
             {faqs.map((item, i) => (
               <AccordionItem
@@ -54,7 +54,7 @@ export function Faq() {
                 value={`item-${i}`}
                 className={i === faqs.length - 1 ? "border-b-0" : ""}
               >
-                <AccordionTrigger className="py-5 text-left text-base font-semibold text-foreground hover:no-underline">
+                <AccordionTrigger className="py-5 text-left text-[15px] font-medium text-foreground hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-sm leading-relaxed text-muted-foreground">

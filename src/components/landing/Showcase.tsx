@@ -1,7 +1,5 @@
 import { Check } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { Tilt } from "./Tilt";
-import { Parallax } from "./Parallax";
 import {
   CallDetectionScreen,
   SafeHavenScreen,
@@ -72,36 +70,38 @@ const rows = [
 
 export function Showcase() {
   return (
-    <section className="relative py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl space-y-20 px-4 sm:space-y-28 sm:px-6">
-        {rows.map((row) => (
+    <section className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        {rows.map((row, i) => (
           <div
             key={row.id}
             id={row.id}
-            className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16"
+            className="grid items-center gap-8 border-border py-12 first:pt-0 last:pb-0 sm:py-16 lg:grid-cols-2 lg:gap-16"
+            style={{ borderTopWidth: i === 0 ? 0 : 1 }}
           >
             <Reveal
               direction={row.reverse ? "right" : "left"}
               className={row.reverse ? "lg:order-2" : ""}
             >
-              <div className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                 <span className="text-primary">{row.index}</span>
                 <span className="h-px w-8 bg-border" />
                 <span>{row.eyebrow}</span>
               </div>
-              <h3 className="text-balance mt-4 text-2xl font-bold text-foreground sm:text-3xl">
+              <h3 className="text-balance mt-4 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
                 {row.title}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
+              <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                 {row.description}
               </p>
               <ul className="mt-6 space-y-3">
                 {row.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-3">
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-teal-100 text-primary">
-                      <Check className="h-3.5 w-3.5" strokeWidth={3} />
-                    </span>
-                    <span className="text-sm leading-relaxed text-foreground sm:text-base">
+                    <Check
+                      className="mt-0.5 h-4 w-4 shrink-0 text-primary"
+                      strokeWidth={2.5}
+                    />
+                    <span className="text-sm leading-relaxed text-foreground">
                       {bullet}
                     </span>
                   </li>
@@ -111,26 +111,10 @@ export function Showcase() {
 
             <Reveal
               direction={row.reverse ? "left" : "right"}
-              delay={120}
+              delay={100}
               className={row.reverse ? "lg:order-1" : ""}
             >
-              <Parallax
-                speed={row.reverse ? -0.05 : 0.05}
-                className="lg:mx-0 lg:max-w-none"
-              >
-                <div className="relative">
-                  <div
-                    aria-hidden="true"
-                    className="absolute -inset-8 -z-10 rounded-[2.5rem] bg-teal-400/10 blur-3xl"
-                  />
-                  <Tilt max={7} glare className="preserve-3d">
-                    {row.screen}
-                  </Tilt>
-                  <span className="animate-float absolute -right-3 -top-3 hidden rounded-full border border-teal-300/20 bg-[#06201F] px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-teal-200 shadow-lg sm:inline-flex">
-                    {row.eyebrow}
-                  </span>
-                </div>
-              </Parallax>
+              {row.screen}
             </Reveal>
           </div>
         ))}

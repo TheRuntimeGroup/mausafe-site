@@ -38,51 +38,50 @@ const features = [
 
 export function Features() {
   return (
-    <section id="features" className="relative py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
-            02 · Capabilities
+    <section id="features" className="py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <Reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
+            02 — Capabilities
           </p>
-          <h2 className="text-balance mt-4 text-3xl font-bold text-foreground sm:text-4xl">
+          <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
             Four signals. One safety net.
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Each capability is designed to catch a different kind of risk —
-            quietly, and before it escalates.
+          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
+            Each capability catches a different kind of risk — quietly, and
+            before it escalates.
           </p>
         </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature, i) => (
-            <Reveal key={feature.title} delay={i * 90} className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-200/70 hover:shadow-[0_24px_60px_-32px_rgba(15,23,42,0.14)]">
-                {/* Scanline on hover */}
-                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-teal-300/0 transition-colors duration-300 group-hover:bg-teal-300/70" />
-
-                <div className="flex items-start justify-between">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                    <feature.icon className="h-6 w-6" />
-                  </span>
-                  <span className="font-mono text-xs font-semibold text-teal-200">
+        <Reveal delay={120}>
+          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => (
+              <article
+                key={feature.title}
+                className="flex flex-col bg-white p-6 transition-colors duration-200 hover:bg-secondary/40 sm:p-7"
+              >
+                <div className="flex items-center justify-between">
+                  <feature.icon
+                    className="h-5 w-5 text-primary"
+                    strokeWidth={1.75}
+                  />
+                  <span className="font-mono text-[11px] text-muted-foreground">
                     {feature.index}
                   </span>
                 </div>
-
-                <h3 className="mt-5 text-lg font-semibold text-foreground">
+                <h3 className="mt-6 text-base font-semibold text-foreground">
                   {feature.title}
                 </h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {feature.description}
                 </p>
-
-                <span className="mt-5 inline-flex w-fit items-center rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-widest text-secondary-foreground">
+                <span className="mt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
                   {feature.tag}
                 </span>
               </article>
-            </Reveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

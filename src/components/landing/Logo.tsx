@@ -4,23 +4,23 @@ export function LogoMark({ className }: { className?: string }) {
   return (
     <img
       src="/logo.png"
-      alt="MauSafe"
+      alt=""
+      aria-hidden="true"
       draggable={false}
-      className={cn("h-10 w-auto object-contain", className)}
+      className={cn("h-8 w-auto object-contain", className)}
     />
   );
 }
 
-export function Logo({
-  className,
-  compact = false,
-}: {
-  className?: string;
-  compact?: boolean;
-}) {
+export function Logo({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center", className)}>
-      <LogoMark className={compact ? "h-8" : "h-10"} />
+      <img
+        src="/logo.png"
+        alt="MauSafe"
+        draggable={false}
+        className="h-9 w-auto object-contain sm:h-10"
+      />
     </span>
   );
 }

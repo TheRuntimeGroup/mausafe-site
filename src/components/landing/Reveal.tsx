@@ -4,9 +4,8 @@ import { cn } from "@/lib/utils";
 type RevealProps = {
   children: ReactNode;
   className?: string;
-  direction?: "up" | "left" | "right" | "scale" | "tilt";
+  direction?: "up" | "left" | "right" | "scale";
   delay?: number;
-  blur?: boolean;
 };
 
 export function Reveal({
@@ -14,7 +13,6 @@ export function Reveal({
   className,
   direction = "up",
   delay = 0,
-  blur = false,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -49,19 +47,12 @@ export function Reveal({
     left: "from-left",
     right: "from-right",
     scale: "scale-in",
-    tilt: "tilt-in",
   }[direction];
 
   return (
     <div
       ref={ref}
-      className={cn(
-        "reveal",
-        directionClass,
-        blur && "reveal-blur",
-        visible && "is-visible",
-        className,
-      )}
+      className={cn("reveal", directionClass, visible && "is-visible", className)}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

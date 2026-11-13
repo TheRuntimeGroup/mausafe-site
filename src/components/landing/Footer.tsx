@@ -20,12 +20,12 @@ const columns = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-white/70 backdrop-blur">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+    <footer className="border-t border-border">
+      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
               A safety companion concept that scans scams, triggers SOS alerts,
               maps safe havens, and verifies calls.
             </p>
@@ -33,7 +33,7 @@ export function Footer() {
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+              <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 {col.title}
               </h4>
               <ul className="mt-4 space-y-3">
@@ -52,7 +52,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 sm:flex-row sm:items-center">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} MauSafe · DEAD SIGNAL
           </p>

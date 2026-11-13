@@ -1,124 +1,104 @@
-import { HeartHandshake, Lightbulb, Trophy } from "lucide-react";
 import { Reveal } from "./Reveal";
+
+const event = [
+  { label: "Theme", value: "Life Powered by Tech" },
+  { label: "Format", value: "24-hour hackathon" },
+  { label: "Organiser", value: "Middlesex University" },
+];
 
 const pillars = [
   {
-    icon: Lightbulb,
+    index: "01",
     title: "Concept-first",
     text: "A working prototype exploring scam detection, SOS alerts, safe havens, and call verification.",
   },
   {
-    icon: Trophy,
-    title: "Hackathon-born",
-    text: "Built in 24 hours for the “Life Powered by Tech” hackathon, organised by Middlesex University.",
+    index: "02",
+    title: "Community-minded",
+    text: "Designed around local shops and safe havens where anyone can find help when they need it.",
   },
   {
-    icon: HeartHandshake,
-    title: "Community-minded",
-    text: "Built around local shops and safe havens where anyone can find help when they need it.",
+    index: "03",
+    title: "Honestly presented",
+    text: "An early prototype, not a released product — no inflated metrics, no pretend app store listing.",
   },
-];
-
-const event = [
-  { label: "Theme", value: "Life Powered by Tech" },
-  { label: "Format", value: "24HR Hackathon" },
-  { label: "Organiser", value: "Middlesex University" },
 ];
 
 export function Concept() {
   return (
-    <section id="concept" className="relative py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Reveal className="max-w-2xl">
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
-            01 · The concept
+    <section id="concept" className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <Reveal>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
+            01 — The concept
           </p>
-          <h2 className="text-balance mt-4 text-3xl font-bold text-foreground sm:text-4xl">
-            A safety concept, built by students for a 24-hour hackathon
+          <h2 className="text-balance mt-4 max-w-2xl text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
+            Built by students for a 24-hour hackathon
           </h2>
         </Reveal>
 
-        {/* Hackathon context */}
-        <Reveal delay={100} className="mt-10">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[#06201F] p-6 text-white sm:p-8">
-            <div aria-hidden="true" className="absolute inset-0 bg-grid-dark opacity-30" />
-            <div
-              aria-hidden="true"
-              className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-teal-400/10 blur-3xl"
-            />
-            <div className="relative grid gap-6 md:grid-cols-3">
-              {event.map((item, i) => (
-                <div
-                  key={item.label}
-                  className={i > 0 ? "md:border-l md:border-teal-300/10 md:pl-8" : ""}
-                >
-                  <span className="font-mono text-[10px] font-medium uppercase tracking-[0.25em] text-teal-300">
-                    {item.label}
-                  </span>
-                  <p className="mt-2 font-display text-xl font-bold leading-snug text-teal-50 sm:text-2xl">
-                    {item.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="mt-10 grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
           <Reveal direction="left">
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[2rem] bg-[#06201F] p-8 text-white sm:p-10">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-grid-dark opacity-40"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-teal-400/10 blur-3xl"
-              />
-
-              <div className="relative flex h-full flex-col">
-                <span className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-teal-300">
-                  Dead Signal
-                </span>
-                <p className="text-balance mt-5 font-display text-2xl font-semibold leading-snug text-teal-50 sm:text-3xl">
-                  “We wanted a calm, always-on layer that catches scams, calls
-                  for help, and points you to safety.”
+            <div className="flex h-full flex-col rounded-3xl bg-[#06201F] p-8 sm:p-10">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-teal-300">
+                Dead Signal
+              </span>
+              <p className="text-balance mt-6 font-display text-2xl font-semibold leading-snug text-teal-50 sm:text-[1.75rem]">
+                “A calm, always-on layer that catches scams, calls for help,
+                and points you to safety.”
+              </p>
+              <p className="mt-5 max-w-md text-sm leading-relaxed text-teal-100/75">
+                MauSafe began as a student concept at Polytechnics Mauritius.
+                It combines smart detection with human help — so a risky moment
+                never has to become a dangerous one.
+              </p>
+              <div className="mt-auto pt-10">
+                <div className="h-px w-full bg-teal-300/15" />
+                <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.18em] text-teal-200/70">
+                  Polytechnics Mauritius · 24HR Hackathon
                 </p>
-                <p className="mt-5 max-w-md text-sm leading-relaxed text-teal-100/80">
-                  MauSafe began as a student concept at Polytechnics Mauritius.
-                  It combines smart detection with human help — so a risky
-                  moment never has to become a dangerous one.
-                </p>
-
-                <div className="mt-auto pt-10">
-                  <div className="h-px w-full bg-teal-300/15" />
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-teal-200/80">
-                    <span>Polytechnics Mauritius</span>
-                    <span className="text-teal-300">24HR Hackathon</span>
-                  </div>
-                </div>
               </div>
             </div>
           </Reveal>
 
-          <div className="flex flex-col gap-6">
-            {pillars.map((pillar, i) => (
-              <Reveal key={pillar.title} direction="right" delay={i * 100}>
-                <div className="group flex gap-5 rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-200/70 hover:shadow-[0_20px_50px_-30px_rgba(15,23,42,0.12)]">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                    <pillar.icon className="h-6 w-6" />
-                  </span>
-                  <div>
-                    <h3 className="text-base font-semibold text-foreground">
-                      {pillar.title}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                      {pillar.text}
-                    </p>
+          <div>
+            <Reveal direction="right">
+              <div className="divide-y divide-border border-y border-border">
+                {event.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center justify-between gap-4 py-4"
+                  >
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {item.label}
+                    </span>
+                    <span className="text-right text-sm font-medium text-foreground">
+                      {item.value}
+                    </span>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                ))}
+              </div>
+            </Reveal>
+
+            <div className="mt-8 space-y-6">
+              {pillars.map((pillar, i) => (
+                <Reveal key={pillar.title} direction="right" delay={i * 80}>
+                  <div className="flex gap-5">
+                    <span className="mt-0.5 font-mono text-[11px] text-primary">
+                      {pillar.index}
+                    </span>
+                    <div>
+                      <h3 className="text-base font-semibold text-foreground">
+                        {pillar.title}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                        {pillar.text}
+                      </p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
