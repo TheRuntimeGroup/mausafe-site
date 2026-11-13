@@ -5,10 +5,9 @@ import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "#concept", label: "Concept" },
   { href: "#features", label: "Features" },
+  { href: "#scam-check", label: "Highlights" },
   { href: "#team", label: "Team" },
-  { href: "#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -54,8 +53,8 @@ export function Navbar() {
             size="sm"
             className="h-9 rounded-full px-4 text-[13px] font-medium"
           >
-            <a href="#concept">
-              Explore the concept
+            <a href="#features">
+              Explore features
               <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </Button>
@@ -86,8 +85,8 @@ export function Navbar() {
             ))}
           </nav>
           <Button asChild className="mt-5 h-10 w-full rounded-full text-sm">
-            <a href="#concept" onClick={() => setOpen(false)}>
-              Explore the concept
+            <a href="#features" onClick={() => setOpen(false)}>
+              Explore features
             </a>
           </Button>
         </div>

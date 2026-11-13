@@ -2,19 +2,19 @@ import { Logo } from "./Logo";
 
 const columns = [
   {
-    title: "Concept",
-    links: ["Overview", "Capabilities", "Team", "FAQ"],
-    hrefs: ["#concept", "#features", "#team", "#faq"],
+    title: "Explore",
+    links: ["Features", "Highlights", "Team"],
+    hrefs: ["#features", "#scam-check", "#team"],
   },
   {
     title: "Features",
     links: ["Scam check", "Emergency SOS", "Safe havens", "Call detection"],
-    hrefs: ["#scam-check", "#sos", "#safe-havens", "#call-detection"],
+    hrefs: ["#scam-check", "#sos", "#features", "#features"],
   },
   {
     title: "Credits",
     links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Middlesex University"],
-    hrefs: ["#team", "#team", "#concept"],
+    hrefs: ["#team", "#team", "#team"],
   },
 ];
 

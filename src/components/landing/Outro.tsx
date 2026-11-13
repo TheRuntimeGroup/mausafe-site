@@ -36,7 +36,7 @@ export function Outro() {
                 variant="outline"
                 className="h-11 w-full rounded-full border-white/20 bg-transparent px-6 text-sm font-medium text-white hover:bg-white/10 hover:text-white sm:w-auto"
               >
-                <a href="#concept">Explore the concept</a>
+                <a href="#features">Explore the features</a>
               </Button>
             </div>
 

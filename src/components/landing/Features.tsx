@@ -42,7 +42,7 @@ export function Features() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-            02 — Capabilities
+            01 — Capabilities
           </p>
           <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
             Four signals. One safety net.

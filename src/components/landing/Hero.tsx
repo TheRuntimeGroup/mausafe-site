@@ -137,8 +137,8 @@ export function Hero() {
                   size="lg"
                   className="h-11 w-full rounded-full px-6 text-sm font-medium sm:w-auto"
                 >
-                  <a href="#concept">
-                    Explore the concept
+                  <a href="#features">
+                    Explore the features
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                 </Button>

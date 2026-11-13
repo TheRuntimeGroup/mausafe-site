@@ -19,7 +19,7 @@ export function Team() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-            07 — The team
+            04 — The team
           </p>
           <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
             Brought to life by DEAD SIGNAL

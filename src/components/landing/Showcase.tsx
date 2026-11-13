@@ -1,16 +1,11 @@
 import { Check } from "lucide-react";
 import { Reveal } from "./Reveal";
-import {
-  CallDetectionScreen,
-  SafeHavenScreen,
-  ScamCheckScreen,
-  SosScreen,
-} from "./feature-screens";
+import { ScamCheckScreen, SosScreen } from "./feature-screens";
 
 const rows = [
   {
     id: "scam-check",
-    index: "03",
+    index: "02",
     eyebrow: "Scam check",
     title: "Know what's real before you tap",
     description:
@@ -24,7 +19,7 @@ const rows = [
   },
   {
     id: "sos",
-    index: "04",
+    index: "03",
     eyebrow: "Emergency SOS",
     title: "Help is always one tap away",
     description:
@@ -35,35 +30,6 @@ const rows = [
       "One-hold activation, even from your lock screen",
     ],
     screen: <SosScreen />,
-    reverse: true,
-  },
-  {
-    id: "safe-havens",
-    index: "05",
-    eyebrow: "Safe havens",
-    title: "A safe place around every corner",
-    description:
-      "MauSafe maps verified local shops, cafés, and community spaces that display the Safe Haven sticker. If you ever feel unsafe, open the map and get guided to the nearest place where someone will help.",
-    bullets: [
-      "Live map of verified safe shops near you",
-      "Recognizable Safe Haven stickers on doors",
-      "Step-by-step guidance to the closest haven",
-    ],
-    screen: <SafeHavenScreen />,
-  },
-  {
-    id: "call-detection",
-    index: "06",
-    eyebrow: "Call detection",
-    title: "Answer with confidence, not caution",
-    description:
-      "Fraud calls often impersonate your bank or service providers. MauSafe silently verifies every incoming call against official registries and tells you — before you answer — whether the number is legitimate.",
-    bullets: [
-      "Automatic verification in the background",
-      "Matches numbers to official bank and business registries",
-      "A clear notification before you pick up",
-    ],
-    screen: <CallDetectionScreen />,
     reverse: true,
   },
 ];

@@ -19,7 +19,7 @@ export function Logo({ className }: { className?: string }) {
         src="/logo.png"
         alt="MauSafe"
         draggable={false}
-        className="h-9 w-auto object-contain sm:h-10"
+        className="h-10 w-auto object-contain sm:h-11"
       />
     </span>
   );
