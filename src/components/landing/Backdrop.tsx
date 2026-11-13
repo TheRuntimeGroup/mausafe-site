@@ -11,22 +11,27 @@ export function Backdrop() {
     >
       <div className="absolute inset-0 bg-background" />
 
-      {/* Aurora — soft drifting color fields */}
-      <div className="animate-aurora-a absolute -left-[12%] -top-[18%] h-[48rem] w-[48rem] rounded-full bg-teal-300/30 blur-[130px]" />
-      <div className="animate-aurora-b absolute -right-[14%] top-[6%] h-[42rem] w-[42rem] rounded-full bg-emerald-300/25 blur-[130px]" />
-      <div className="animate-aurora-c absolute -bottom-[22%] left-[20%] h-[46rem] w-[46rem] rounded-full bg-cyan-300/20 blur-[140px]" />
+      {/* Aurora — restrained, cool drifting fields */}
+      <div className="animate-aurora-a absolute -left-[14%] -top-[20%] h-[40rem] w-[40rem] rounded-full bg-teal-300/15 blur-[120px]" />
+      <div className="animate-aurora-b absolute -right-[16%] top-[10%] h-[36rem] w-[36rem] rounded-full bg-emerald-200/15 blur-[120px]" />
 
       {/* Fading grid */}
-      <div className="absolute inset-0 bg-grid opacity-70 [mask-image:radial-gradient(ellipse_60%_60%_at_50%_35%,black,transparent)]" />
+      <div className="absolute inset-0 bg-grid opacity-40 [mask-image:radial-gradient(ellipse_55%_55%_at_50%_35%,black,transparent)]" />
 
       {/* Film grain */}
       <div
-        className="absolute inset-0 opacity-[0.05] mix-blend-multiply"
+        className="absolute inset-0 opacity-[0.03] mix-blend-multiply"
         style={{ backgroundImage: grain }}
       />
 
       {/* Connected particles */}
-      <ParticleField className="absolute inset-0" />
+      <ParticleField
+        className="absolute inset-0"
+        density={16}
+        dotColor="rgba(20, 184, 166, 0.26)"
+        linkColor="rgba(20, 184, 166, 0.08)"
+        maxDistance={100}
+      />
 
       {/* Cursor halo */}
       <MouseGlow />

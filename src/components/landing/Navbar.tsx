@@ -33,17 +33,17 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-xl"
+          ? "border-b border-border/60 bg-background/75 backdrop-blur-xl"
           : "bg-transparent",
       )}
     >
       {/* Scroll progress */}
       <div
-        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-primary"
+        className="absolute inset-x-0 top-0 h-px origin-left bg-primary/60"
         style={{ transform: `scaleX(${progress})` }}
       />
 
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:h-[72px]">
+      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-4 sm:px-6 lg:h-20">
         <a href="#top" className="flex items-center" aria-label="MauSafe home">
           <Logo />
         </a>

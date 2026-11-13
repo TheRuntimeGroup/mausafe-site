@@ -56,7 +56,7 @@ export function Features() {
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature, i) => (
             <Reveal key={feature.title} delay={i * 90} className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_28px_60px_-28px_rgba(15,118,110,0.4)]">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-200/70 hover:shadow-[0_24px_60px_-32px_rgba(15,23,42,0.14)]">
                 {/* Scanline on hover */}
                 <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-teal-300/0 transition-colors duration-300 group-hover:bg-teal-300/70" />
 

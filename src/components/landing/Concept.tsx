@@ -104,7 +104,7 @@ export function Concept() {
           <div className="flex flex-col gap-6">
             {pillars.map((pillar, i) => (
               <Reveal key={pillar.title} direction="right" delay={i * 100}>
-                <div className="group flex gap-5 rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-[0_20px_50px_-24px_rgba(15,118,110,0.35)]">
+                <div className="group flex gap-5 rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-200/70 hover:shadow-[0_20px_50px_-30px_rgba(15,23,42,0.12)]">
                   <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
                     <pillar.icon className="h-6 w-6" />
                   </span>
