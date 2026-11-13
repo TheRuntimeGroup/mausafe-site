@@ -1,5 +1,7 @@
 import { Check } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { Tilt } from "./Tilt";
+import { Parallax } from "./Parallax";
 import {
   CallDetectionScreen,
   SafeHavenScreen,
@@ -112,7 +114,23 @@ export function Showcase() {
               delay={120}
               className={row.reverse ? "lg:order-1" : ""}
             >
-              <div className="lg:mx-0 lg:max-w-none">{row.screen}</div>
+              <Parallax
+                speed={row.reverse ? -0.05 : 0.05}
+                className="lg:mx-0 lg:max-w-none"
+              >
+                <div className="relative">
+                  <div
+                    aria-hidden="true"
+                    className="absolute -inset-8 -z-10 rounded-[2.5rem] bg-teal-400/10 blur-3xl"
+                  />
+                  <Tilt max={7} glare className="preserve-3d">
+                    {row.screen}
+                  </Tilt>
+                  <span className="animate-float absolute -right-3 -top-3 hidden rounded-full border border-teal-300/20 bg-[#06201F] px-3 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-teal-200 shadow-lg sm:inline-flex">
+                    {row.eyebrow}
+                  </span>
+                </div>
+              </Parallax>
             </Reveal>
           </div>
         ))}

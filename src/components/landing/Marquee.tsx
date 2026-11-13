@@ -12,9 +12,9 @@ export function Marquee() {
   return (
     <section
       aria-hidden="true"
-      className="relative overflow-hidden border-y border-teal-900/20 bg-teal-900 py-4"
+      className="relative overflow-hidden border-y border-teal-300/10 bg-[#06201F] py-4"
     >
-      <div className="flex w-max animate-marquee">
+      <div className="flex w-max animate-marquee [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
         {row.map((item, i) => (
           <span
             key={i}

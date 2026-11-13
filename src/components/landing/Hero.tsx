@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUpRight, MapPin, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tilt } from "./Tilt";
 import { Reveal } from "./Reveal";
+import { Parallax } from "./Parallax";
 
 function Radar() {
   return (
@@ -113,6 +114,40 @@ function PhoneScreen() {
   );
 }
 
+function OrbitDots() {
+  return (
+    <>
+      <span className="absolute left-1/2 top-0 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300 shadow-[0_0_12px_2px_rgba(94,234,212,0.65)]" />
+      <span className="absolute bottom-[9%] right-[7%] h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_10px_2px_rgba(110,231,183,0.55)]" />
+      <span className="absolute left-[9%] top-[52%] h-1.5 w-1.5 rounded-full bg-rose-300 shadow-[0_0_8px_2px_rgba(253,164,175,0.5)]" />
+      <span className="absolute bottom-[30%] left-[2%] h-1.5 w-1.5 rounded-full bg-cyan-200" />
+    </>
+  );
+}
+
+function Sparkles() {
+  const dots = [
+    { className: "left-[4%] top-[6%]", delay: "0s" },
+    { className: "right-[2%] top-[16%]", delay: "1.2s" },
+    { className: "left-[8%] bottom-[12%]", delay: "2.1s" },
+    { className: "right-[6%] bottom-[6%]", delay: "0.6s" },
+    { className: "left-[46%] top-[-4%]", delay: "1.7s" },
+  ];
+
+  return (
+    <>
+      {dots.map((dot, i) => (
+        <span
+          key={i}
+          aria-hidden="true"
+          className={`animate-float absolute ${dot.className} h-1.5 w-1.5 rounded-full bg-teal-300/70`}
+          style={{ animationDelay: dot.delay, animationDuration: "5s" }}
+        />
+      ))}
+    </>
+  );
+}
+
 const floatingChips = [
   { label: "Scam check", className: "left-[-12%] top-[18%]", z: 30 },
   { label: "SOS alerts", className: "right-[-14%] top-[30%]", z: 50 },
@@ -122,30 +157,51 @@ const floatingChips = [
 
 function HeroVisual() {
   return (
-    <Tilt className="preserve-3d mx-auto w-[300px] sm:w-[340px]" max={10}>
-      <div className="preserve-3d relative">
-        {/* Glow */}
-        <div
-          aria-hidden="true"
-          className="absolute -inset-10 -z-10 rounded-full bg-teal-400/15 blur-3xl"
-        />
+    <Parallax
+      speed={0.07}
+      className="relative mx-auto w-[320px] sm:w-[360px] lg:w-[400px]"
+    >
+      {/* Aura */}
+      <div
+        aria-hidden="true"
+        className="absolute -inset-20 -z-10 rounded-full bg-teal-400/20 blur-[100px]"
+      />
 
-        {/* Floating chips */}
-        {floatingChips.map((chip) => (
-          <span
-            key={chip.label}
-            style={{ transform: `translateZ(${chip.z}px)` }}
-            className={`absolute ${chip.className} z-20 hidden rounded-full border border-border bg-white/90 px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-widest text-teal-700 shadow-lg backdrop-blur sm:inline-block`}
-          >
-            {chip.label}
-          </span>
-        ))}
-
-        <div className="rounded-[3rem] border border-[#0B3B37] bg-[#072725] p-2.5 shadow-[0_40px_90px_-30px_rgba(6,32,31,0.65)]">
-          <PhoneScreen />
+      {/* Centered orbit rings */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
+        <div className="animate-spin-slower relative h-[340px] w-[340px] rounded-full border border-teal-300/15 sm:h-[400px] sm:w-[400px] lg:h-[460px] lg:w-[460px]">
+          <OrbitDots />
         </div>
+        <div className="animate-spin-slow absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-teal-300/25 sm:h-[350px] sm:w-[350px] lg:h-[400px] lg:w-[400px]" />
       </div>
-    </Tilt>
+
+      {/* Floating sparkles */}
+      <Sparkles />
+
+      <Tilt max={12} scale={1.02} glare className="preserve-3d">
+        <div className="preserve-3d relative">
+          <div
+            aria-hidden="true"
+            className="absolute -inset-10 -z-10 rounded-full bg-teal-400/15 blur-3xl"
+          />
+
+          {/* Floating chips */}
+          {floatingChips.map((chip) => (
+            <span
+              key={chip.label}
+              style={{ transform: `translateZ(${chip.z}px)` }}
+              className={`absolute ${chip.className} z-20 hidden rounded-full border border-teal-200/60 bg-white/90 px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-widest text-teal-700 shadow-lg shadow-teal-900/5 backdrop-blur sm:inline-block`}
+            >
+              {chip.label}
+            </span>
+          ))}
+
+          <div className="rounded-[3rem] border border-[#0B3B37] bg-[#072725] p-2.5 shadow-[0_50px_110px_-35px_rgba(6,32,31,0.7)]">
+            <PhoneScreen />
+          </div>
+        </div>
+      </Tilt>
+    </Parallax>
   );
 }
 
@@ -155,20 +211,19 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden pt-28 pb-16 sm:pt-36 sm:pb-20"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -right-24 -top-24 h-[420px] w-[420px] rounded-full bg-teal-200/30 blur-3xl"
-      />
-
       <div className="relative mx-auto grid max-w-6xl items-center gap-16 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
         <div className="text-center lg:text-left">
           <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary sm:text-xs">
+            <p className="inline-flex items-center gap-2 font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary sm:text-xs">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-teal-500" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-600" />
+              </span>
               Dead Signal · Polytechnics Mauritius
             </p>
           </Reveal>
 
-          <Reveal delay={90}>
+          <Reveal delay={90} blur>
             <h1 className="text-balance mt-5 text-5xl font-bold leading-[0.98] tracking-tight text-foreground sm:text-6xl lg:text-7xl">
               Your safety, always{" "}
               <span className="relative whitespace-nowrap text-primary">

@@ -125,17 +125,18 @@
     opacity: 0;
     transform: translateY(32px);
     transition:
-      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
+      opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform, filter;
   }
 
   .reveal.from-left {
-    transform: translateX(-40px);
+    transform: translateX(-44px);
   }
 
   .reveal.from-right {
-    transform: translateX(40px);
+    transform: translateX(44px);
   }
 
   .reveal.scale-in {
@@ -146,9 +147,14 @@
     transform: perspective(900px) rotateX(12deg) translateY(32px);
   }
 
+  .reveal-blur {
+    filter: blur(14px);
+  }
+
   .reveal.is-visible {
     opacity: 1;
     transform: none;
+    filter: blur(0);
   }
 
   /* Motion */
@@ -170,6 +176,30 @@
 
   .animate-pulse-ring {
     animation: mausafe-pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-spin-slow {
+    animation: mausafe-spin 26s linear infinite;
+  }
+
+  .animate-spin-slower {
+    animation: mausafe-spin 46s linear infinite;
+  }
+
+  .animate-spin-reverse {
+    animation: mausafe-spin 36s linear infinite reverse;
+  }
+
+  .animate-aurora-a {
+    animation: mausafe-aurora-a 24s ease-in-out infinite;
+  }
+
+  .animate-aurora-b {
+    animation: mausafe-aurora-b 28s ease-in-out infinite;
+  }
+
+  .animate-aurora-c {
+    animation: mausafe-aurora-c 32s ease-in-out infinite;
   }
 
   .bg-grid {
@@ -231,16 +261,60 @@
   }
 }
 
+@keyframes mausafe-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mausafe-aurora-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(7%, 5%, 0) scale(1.12);
+  }
+}
+
+@keyframes mausafe-aurora-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+  }
+  50% {
+    transform: translate3d(-6%, -4%, 0) scale(0.95);
+  }
+}
+
+@keyframes mausafe-aurora-c {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, 7%, 0) scale(1.1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
+  .reveal-blur,
   .animate-float,
   .animate-float-slow,
   .animate-marquee,
   .animate-radar,
-  .animate-pulse-ring {
+  .animate-pulse-ring,
+  .animate-spin-slow,
+  .animate-spin-slower,
+  .animate-spin-reverse,
+  .animate-aurora-a,
+  .animate-aurora-b,
+  .animate-aurora-c {
     animation: none !important;
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
+    filter: none !important;
   }
 }

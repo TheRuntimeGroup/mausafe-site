@@ -6,6 +6,7 @@ type RevealProps = {
   className?: string;
   direction?: "up" | "left" | "right" | "scale" | "tilt";
   delay?: number;
+  blur?: boolean;
 };
 
 export function Reveal({
@@ -13,6 +14,7 @@ export function Reveal({
   className,
   direction = "up",
   delay = 0,
+  blur = false,
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -53,7 +55,13 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      className={cn("reveal", directionClass, visible && "is-visible", className)}
+      className={cn(
+        "reveal",
+        directionClass,
+        blur && "reveal-blur",
+        visible && "is-visible",
+        className,
+      )}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}

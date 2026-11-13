@@ -25,8 +25,9 @@ export function Team() {
             Brought to life by DEAD SIGNAL
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            A student team from Polytechnics Mauritius, turning a safety idea
-            into a working concept.
+            A student team from Polytechnics Mauritius, competing in the
+            “Life Powered by Tech” 24-hour hackathon organised by Middlesex
+            University.
           </p>
         </Reveal>
 
@@ -53,7 +54,9 @@ export function Team() {
                 <p className="mt-2 text-lg font-semibold text-foreground">
                   Polytechnics Mauritius
                 </p>
-                <p className="text-sm text-muted-foreground">Student concept project</p>
+                <p className="text-sm text-muted-foreground">
+                  24HR Hackathon · Middlesex University
+                </p>
               </div>
             </div>
           </div>

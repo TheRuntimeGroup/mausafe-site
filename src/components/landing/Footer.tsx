@@ -13,14 +13,14 @@ const columns = [
   },
   {
     title: "Credits",
-    links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Student project"],
+    links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Middlesex University"],
     hrefs: ["#team", "#team", "#concept"],
   },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-white">
+    <footer className="border-t border-border bg-white/70 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
@@ -57,7 +57,7 @@ export function Footer() {
             © {new Date().getFullYear()} MauSafe · DEAD SIGNAL
           </p>
           <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            Concept app · Polytechnics Mauritius
+            24HR Hackathon · Middlesex University
           </p>
         </div>
       </div>
