@@ -1,22 +1,28 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 const links = [
+  { href: "#concept", label: "Concept" },
   { href: "#features", label: "Features" },
-  { href: "#how-it-works", label: "How it works" },
-  { href: "#safe-havens", label: "Safe havens" },
+  { href: "#team", label: "Team" },
   { href: "#faq", label: "FAQ" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? window.scrollY / max : 0);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -31,6 +37,12 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
+      {/* Scroll progress */}
+      <div
+        className="absolute inset-x-0 top-0 h-0.5 origin-left bg-primary"
+        style={{ transform: `scaleX(${progress})` }}
+      />
+
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:h-[72px]">
         <a href="#top" className="flex items-center" aria-label="MauSafe home">
           <Logo />
@@ -50,7 +62,10 @@ export function Navbar() {
 
         <div className="hidden md:block">
           <Button asChild className="rounded-full px-5">
-            <a href="#download">Get the app</a>
+            <a href="#concept">
+              Explore the concept
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
           </Button>
         </div>
 
@@ -79,8 +94,8 @@ export function Navbar() {
             ))}
           </nav>
           <Button asChild className="mt-4 w-full rounded-full">
-            <a href="#download" onClick={() => setOpen(false)}>
-              Get the app
+            <a href="#concept" onClick={() => setOpen(false)}>
+              Explore the concept
             </a>
           </Button>
         </div>

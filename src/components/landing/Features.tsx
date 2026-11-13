@@ -1,46 +1,38 @@
-import {
-  ArrowRight,
-  MapPin,
-  PhoneCall,
-  ScanSearch,
-  Siren,
-} from "lucide-react";
-
-const stats = [
-  { value: "40,000+", label: "People protected" },
-  { value: "98%", label: "Scam detection" },
-  { value: "500+", label: "Safe havens mapped" },
-  { value: "24/7", label: "Background monitoring" },
-];
+import { MapPin, PhoneCall, ScanSearch, Siren } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const features = [
   {
+    index: "01",
     icon: ScanSearch,
-    href: "#scam-check",
     title: "Scam Check",
+    tag: "AI · Trustpilot",
     description:
-      "Paste any SMS or link to get an instant trust score, powered by Trustpilot reviews and AI analysis.",
+      "Paste an SMS or link to get a clear trust score before you tap — powered by AI signals and Trustpilot reviews.",
   },
   {
+    index: "02",
     icon: Siren,
-    href: "#sos",
     title: "One-tap SOS",
+    tag: "Custom contacts",
     description:
-      "Hold the SOS button to alert your custom emergency contacts and auto-send your live location.",
+      "Hold the SOS button to alert the emergency contacts you choose, auto-sending your live location instantly.",
   },
   {
+    index: "03",
     icon: MapPin,
-    href: "#safe-havens",
-    title: "Safe havens",
+    title: "Safe Havens",
+    tag: "Live map",
     description:
-      "Find verified shops and spaces near you — marked with stickers — where you can always ask for help.",
+      "See verified local shops marked with a Safe Haven sticker and get guided to the closest one.",
   },
   {
+    index: "04",
     icon: PhoneCall,
-    href: "#call-detection",
-    title: "Smart call check",
+    title: "Call Detection",
+    tag: "Registry check",
     description:
-      "Incoming calls are verified against trusted registries like banks, so you always know who's really calling.",
+      "Incoming calls are verified against official registries — like banks — before you ever pick up.",
   },
 ];
 
@@ -48,52 +40,47 @@ export function Features() {
   return (
     <section id="features" className="relative py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        {/* Stats strip */}
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-border bg-border shadow-sm md:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-white px-6 py-8 text-center">
-              <p className="font-display text-3xl font-bold text-primary sm:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1.5 text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mx-auto mt-16 max-w-2xl text-center sm:mt-20">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Features
-          </span>
-          <h2 className="text-balance mt-3 text-3xl font-bold text-foreground sm:text-4xl">
-            Protection that works quietly in the background
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
+            02 · Capabilities
+          </p>
+          <h2 className="text-balance mt-4 text-3xl font-bold text-foreground sm:text-4xl">
+            Four signals. One safety net.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            MauSafe combines smart detection with human help — so you're covered
-            before, during, and after a risky moment.
+            Each capability is designed to catch a different kind of risk —
+            quietly, and before it escalates.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => (
-            <a
-              key={feature.title}
-              href={feature.href}
-              className="group flex flex-col rounded-3xl border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_24px_48px_-24px_rgba(15,118,110,0.35)]"
-            >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
-                <feature.icon className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 text-lg font-semibold text-foreground">
-                {feature.title}
-              </h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                {feature.description}
-              </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                Learn more
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </a>
+          {features.map((feature, i) => (
+            <Reveal key={feature.title} delay={i * 90} className="h-full">
+              <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-teal-200 hover:shadow-[0_28px_60px_-28px_rgba(15,118,110,0.4)]">
+                {/* Scanline on hover */}
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-teal-300/0 transition-colors duration-300 group-hover:bg-teal-300/70" />
+
+                <div className="flex items-start justify-between">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                    <feature.icon className="h-6 w-6" />
+                  </span>
+                  <span className="font-mono text-xs font-semibold text-teal-200">
+                    {feature.index}
+                  </span>
+                </div>
+
+                <h3 className="mt-5 text-lg font-semibold text-foreground">
+                  {feature.title}
+                </h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
+                  {feature.description}
+                </p>
+
+                <span className="mt-5 inline-flex w-fit items-center rounded-full bg-secondary px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-widest text-secondary-foreground">
+                  {feature.tag}
+                </span>
+              </article>
+            </Reveal>
           ))}
         </div>
       </div>

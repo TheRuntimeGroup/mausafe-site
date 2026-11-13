@@ -1,11 +1,12 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
+import { Marquee } from "@/components/landing/Marquee";
+import { Concept } from "@/components/landing/Concept";
 import { Features } from "@/components/landing/Features";
 import { Showcase } from "@/components/landing/Showcase";
-import { HowItWorks } from "@/components/landing/HowItWorks";
-import { Testimonials } from "@/components/landing/Testimonials";
+import { Team } from "@/components/landing/Team";
 import { Faq } from "@/components/landing/Faq";
-import { DownloadCta } from "@/components/landing/DownloadCta";
+import { Outro } from "@/components/landing/Outro";
 import { Footer } from "@/components/landing/Footer";
 
 const Index = () => {
@@ -14,12 +15,13 @@ const Index = () => {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
+        <Concept />
         <Features />
         <Showcase />
-        <HowItWorks />
-        <Testimonials />
+        <Team />
         <Faq />
-        <DownloadCta />
+        <Outro />
       </main>
       <Footer />
     </div>

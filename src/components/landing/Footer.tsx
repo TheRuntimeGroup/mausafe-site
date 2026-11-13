@@ -2,19 +2,19 @@ import { Logo } from "./Logo";
 
 const columns = [
   {
-    title: "Product",
-    links: ["Features", "Safe havens", "How it works", "Download"],
-    hrefs: ["#features", "#safe-havens", "#how-it-works", "#download"],
+    title: "Concept",
+    links: ["Overview", "Capabilities", "Team", "FAQ"],
+    hrefs: ["#concept", "#features", "#team", "#faq"],
   },
   {
-    title: "Company",
-    links: ["About", "Community", "Partners"],
-    hrefs: ["#", "#", "#"],
+    title: "Features",
+    links: ["Scam check", "Emergency SOS", "Safe havens", "Call detection"],
+    hrefs: ["#scam-check", "#sos", "#safe-havens", "#call-detection"],
   },
   {
-    title: "Support",
-    links: ["Help center", "Privacy", "Terms"],
-    hrefs: ["#faq", "#", "#"],
+    title: "Credits",
+    links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Student project"],
+    hrefs: ["#team", "#team", "#concept"],
   },
 ];
 
@@ -26,20 +26,22 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Your calm companion for staying safe, staying alert, and getting
-              help when it matters most.
+              A safety companion concept that scans scams, triggers SOS alerts,
+              maps safe havens, and verifies calls.
             </p>
           </div>
 
           {columns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-sm font-semibold text-foreground">{col.title}</h4>
+              <h4 className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
+                {col.title}
+              </h4>
               <ul className="mt-4 space-y-3">
                 {col.links.map((link, i) => (
                   <li key={link}>
                     <a
                       href={col.hrefs[i]}
-                      className="text-sm text-muted-foreground transition-colors hover:text-primary"
+                      className="text-sm text-foreground transition-colors hover:text-primary"
                     >
                       {link}
                     </a>
@@ -52,10 +54,10 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} MauSafe. All rights reserved.
+            © {new Date().getFullYear()} MauSafe · DEAD SIGNAL
           </p>
-          <p className="text-xs text-muted-foreground">
-            Made with care for safer communities.
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+            Concept app · Polytechnics Mauritius
           </p>
         </div>
       </div>
