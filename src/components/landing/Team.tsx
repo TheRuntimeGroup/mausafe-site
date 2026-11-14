@@ -20,8 +20,8 @@ export function Team() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
-            <h2 className="text-balance text-4xl uppercase leading-[0.95] text-foreground sm:text-6xl lg:col-span-8">
-              Four students. 24 hours.
+            <h2 className="text-balance text-5xl leading-[0.95] text-foreground sm:text-7xl lg:col-span-8">
+              Four students. <em className="text-primary">24 hours.</em>
             </h2>
             <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:col-span-4">
               A Mauritian student team turning one simple idea into a working
