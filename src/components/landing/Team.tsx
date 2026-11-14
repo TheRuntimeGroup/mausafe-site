@@ -15,11 +15,11 @@ const facts = [
 
 export function Team() {
   return (
-    <section id="team" className="py-16 sm:py-24">
+    <section id="team" className="pb-16 sm:pb-24">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <Reveal>
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-            04 — The team
+            03 — The team
           </p>
           <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
             Brought to life by DEAD SIGNAL
@@ -46,10 +46,10 @@ export function Team() {
           </div>
         </Reveal>
 
-        <Reveal delay={160}>
-          <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {members.map((member) => (
-              <article key={member.name} className="bg-white p-6">
+        <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {members.map((member, i) => (
+            <Reveal key={member.name} delay={i * 90} className="bg-white">
+              <article className="h-full p-6">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary font-display text-xs font-semibold text-secondary-foreground">
                   {member.initials}
                 </span>
@@ -60,9 +60,9 @@ export function Team() {
                   {member.role}
                 </p>
               </article>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

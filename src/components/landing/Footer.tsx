@@ -1,20 +1,21 @@
 import { Logo } from "./Logo";
+import { APK_URL } from "@/lib/download";
 
 const columns = [
   {
     title: "Explore",
-    links: ["Features", "Highlights", "Team"],
-    hrefs: ["#features", "#scam-check", "#team"],
-  },
-  {
-    title: "Features",
-    links: ["Scam check", "Emergency SOS", "Safe havens", "Call detection"],
-    hrefs: ["#scam-check", "#sos", "#features", "#features"],
+    links: ["Features", "Team", "Download"],
+    hrefs: ["#features", "#team", "#download"],
   },
   {
     title: "Credits",
     links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Middlesex University"],
     hrefs: ["#team", "#team", "#team"],
+  },
+  {
+    title: "Get MauSafe",
+    links: ["Android APK", "Back to top"],
+    hrefs: [APK_URL, "#top"],
   },
 ];
 

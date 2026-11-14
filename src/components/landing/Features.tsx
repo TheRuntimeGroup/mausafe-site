@@ -53,16 +53,13 @@ export function Features() {
           </p>
         </Reveal>
 
-        <Reveal delay={120}>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((feature) => (
-              <article
-                key={feature.title}
-                className="flex flex-col bg-white p-6 transition-colors duration-200 hover:bg-secondary/40 sm:p-7"
-              >
+        <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, i) => (
+            <Reveal key={feature.title} delay={i * 90} className="bg-white">
+              <article className="group flex h-full flex-col p-6 transition-colors duration-200 hover:bg-secondary/40 sm:p-7">
                 <div className="flex items-center justify-between">
                   <feature.icon
-                    className="h-5 w-5 text-primary"
+                    className="h-5 w-5 text-primary transition-transform duration-300 group-hover:-translate-y-0.5"
                     strokeWidth={1.75}
                   />
                   <span className="font-mono text-[11px] text-muted-foreground">
@@ -79,9 +76,9 @@ export function Features() {
                   {feature.tag}
                 </span>
               </article>
-            ))}
-          </div>
-        </Reveal>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,9 +1,8 @@
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
-import { Showcase } from "@/components/landing/Showcase";
+import { DownloadApp } from "@/components/landing/DownloadApp";
 import { Team } from "@/components/landing/Team";
-import { Outro } from "@/components/landing/Outro";
 import { Footer } from "@/components/landing/Footer";
 
 const Index = () => {
@@ -13,9 +12,8 @@ const Index = () => {
       <main>
         <Hero />
         <Features />
-        <Showcase />
+        <DownloadApp />
         <Team />
-        <Outro />
       </main>
       <Footer />
     </div>

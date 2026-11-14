@@ -1,102 +1,53 @@
-import { ArrowUpRight, MapPin, ShieldCheck } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { APK_URL } from "@/lib/download";
 
 const capabilities = ["Scam check", "Emergency SOS", "Safe havens", "Call detection"];
 
-function Radar() {
+function SignalRadar() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[190px]">
-      <div className="absolute inset-0 rounded-full border border-teal-300/25" />
-      <div className="absolute inset-[21%] rounded-full border border-teal-300/20" />
-      <div className="absolute inset-[42%] rounded-full border border-teal-300/20" />
-      <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-teal-300/15" />
-      <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-teal-300/15" />
+    <div className="relative mx-auto aspect-square w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[360px]">
+      {/* Rings */}
+      <div className="absolute inset-0 rounded-full border border-teal-900/10" />
+      <div className="absolute inset-[15%] rounded-full border border-teal-900/10" />
+      <div className="absolute inset-[30%] rounded-full border border-teal-900/10" />
+      <div className="absolute inset-[45%] rounded-full border border-teal-900/15" />
 
+      {/* Crosshair */}
+      <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-teal-900/5" />
+      <div className="absolute left-0 top-1/2 h-px w-full -translate-y-1/2 bg-teal-900/5" />
+
+      {/* Rotating sweep */}
       <div className="absolute inset-0 overflow-hidden rounded-full">
         <div
           className="animate-radar absolute inset-0 rounded-full"
           style={{
             background:
-              "conic-gradient(from 0deg, rgba(94,234,212,0.5), rgba(94,234,212,0.07) 70deg, transparent 120deg)",
+              "conic-gradient(from 0deg, rgba(15,118,110,0.22), rgba(15,118,110,0.04) 70deg, transparent 120deg)",
           }}
         />
       </div>
 
-      <span className="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-300" />
-      <span className="absolute left-[68%] top-[30%] h-2 w-2 rounded-full bg-teal-200" />
-      <span className="absolute left-[28%] top-[62%] h-1.5 w-1.5 rounded-full bg-teal-200/80" />
-      <span className="absolute left-[55%] top-[72%] h-1.5 w-1.5 rounded-full bg-rose-300" />
-    </div>
-  );
-}
+      {/* Center */}
+      <span className="absolute left-1/2 top-1/2 flex h-4 w-4 -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <span className="animate-pulse-ring absolute h-4 w-4 rounded-full bg-primary/40" />
+        <span className="relative h-3 w-3 rounded-full bg-primary" />
+      </span>
 
-function PhoneScreen() {
-  return (
-    <div className="overflow-hidden rounded-[1.9rem] bg-[#06201F]">
-      <div className="flex items-center justify-between px-6 pt-3.5 font-mono text-[10px] text-teal-100/60">
-        <span>21:47</span>
-        <span className="flex items-center gap-1.5">
-          <span className="inline-block h-2 w-3 rounded-[2px] border border-teal-100/40" />
-          <span className="inline-block h-2 w-2 rounded-full border border-teal-100/40" />
-        </span>
-      </div>
-
-      <div className="space-y-4 px-4 pb-5 pt-4">
-        <div className="flex items-center justify-between px-1">
-          <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-teal-100">
-            MauSafe
-          </span>
-          <span className="inline-flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-widest text-teal-200">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-300" />
-            Online
-          </span>
-        </div>
-
-        <Radar />
-
-        <div className="rounded-xl border border-teal-300/15 bg-teal-400/5 p-3.5">
-          <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-widest text-teal-200/70">
-            <span>Link scan</span>
-            <span className="inline-flex items-center gap-1 text-emerald-300">
-              <ShieldCheck className="h-3.5 w-3.5" /> Safe
-            </span>
-          </div>
-          <p className="mt-2 truncate font-mono text-[11px] text-teal-50">
-            mausafe.app/verify
-          </p>
-          <div className="mt-3 flex items-center gap-3">
-            <div className="h-1 flex-1 overflow-hidden rounded-full bg-teal-300/15">
-              <div className="h-full w-[92%] rounded-full bg-emerald-400" />
-            </div>
-            <span className="font-mono text-[11px] font-semibold text-emerald-300">
-              92
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-[auto_1fr] gap-3">
-          <div className="flex h-[68px] w-[68px] flex-col items-center justify-center rounded-xl bg-rose-500 text-white">
-            <span className="font-mono text-xs font-bold tracking-widest">SOS</span>
-            <span className="mt-0.5 text-[8px] uppercase tracking-wide text-rose-100">
-              Hold
-            </span>
-          </div>
-
-          <div className="flex flex-col justify-center rounded-xl border border-teal-300/15 bg-teal-400/5 p-3">
-            <span className="font-mono text-[8px] uppercase tracking-widest text-teal-200/70">
-              Nearest haven
-            </span>
-            <div className="mt-1 flex items-center justify-between gap-2">
-              <span className="font-mono text-[11px] text-teal-50">
-                Maple Corner Café
-              </span>
-              <MapPin className="h-3.5 w-3.5 shrink-0 text-teal-300" />
-            </div>
-            <span className="mt-1 font-mono text-[9px] text-teal-200/70">120m away</span>
-          </div>
-        </div>
-      </div>
+      {/* Blips */}
+      <span className="absolute left-[68%] top-[26%] flex h-3 w-3 items-center justify-center">
+        <span className="absolute h-3 w-3 animate-ping rounded-full bg-primary/30" />
+        <span className="relative h-2 w-2 rounded-full bg-primary" />
+      </span>
+      <span
+        className="absolute left-[26%] top-[62%] flex h-3 w-3 items-center justify-center"
+        style={{ animationDelay: "0.8s" }}
+      >
+        <span className="absolute h-3 w-3 animate-ping rounded-full bg-primary/25" />
+        <span className="relative h-2 w-2 rounded-full bg-primary/70" />
+      </span>
+      <span className="absolute left-[58%] top-[74%] h-2 w-2 rounded-full bg-rose-400" />
     </div>
   );
 }
@@ -104,68 +55,66 @@ function PhoneScreen() {
 export function Hero() {
   return (
     <section id="top" className="border-b border-border">
-      <div className="mx-auto max-w-6xl px-5 pt-24 sm:px-8 sm:pt-28 lg:pt-32">
-        <div className="grid items-center gap-12 pb-14 sm:pb-20 lg:grid-cols-[1.1fr_0.9fr] lg:gap-8">
-          <div>
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="grid items-center gap-12 pb-14 pt-24 sm:pb-20 sm:pt-28 lg:grid-cols-[1.05fr_0.95fr] lg:pt-32">
+          <div className="text-center lg:text-left">
             <Reveal>
-              <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-primary sm:text-[11px]">
+              <p className="flex items-center justify-center gap-3 font-mono text-[10px] uppercase tracking-[0.22em] text-primary sm:text-[11px] lg:justify-start">
                 <span className="h-px w-8 bg-primary/40" />
                 Life powered by tech — 24HR hackathon
-              </div>
+              </p>
             </Reveal>
 
-            <Reveal delay={80}>
-              <h1 className="mt-6 text-[2.6rem] font-bold leading-[1.03] text-foreground sm:text-6xl lg:text-[4.4rem]">
+            <Reveal delay={90}>
+              <h1 className="text-balance mt-6 text-[2.7rem] font-bold leading-[1.03] text-foreground sm:text-6xl lg:text-[4.4rem]">
                 Your safety,
                 <br />
                 always <span className="text-primary">on signal</span>.
               </h1>
             </Reveal>
 
-            <Reveal delay={160}>
-              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
-                A safety companion concept that scans scams, triggers one-tap
-                SOS, maps safe havens, and verifies incoming calls — so you
-                always know what's real.
+            <Reveal delay={180}>
+              <p className="text-balance mx-auto mt-6 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg lg:mx-0">
+                MauSafe scans scams, triggers one-tap SOS, maps safe havens,
+                and verifies incoming calls — so you always know what's real.
               </p>
             </Reveal>
 
-            <Reveal delay={240}>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Reveal delay={270}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start">
                 <Button
                   asChild
                   size="lg"
-                  className="h-11 w-full rounded-full px-6 text-sm font-medium sm:w-auto"
+                  className="h-12 w-full rounded-full px-7 text-sm font-medium sm:w-auto"
                 >
-                  <a href="#features">
-                    Explore the features
-                    <ArrowUpRight className="h-4 w-4" />
+                  <a href={APK_URL}>
+                    <Download className="h-4 w-4" />
+                    Download for Android
                   </a>
                 </Button>
                 <Button
                   asChild
                   size="lg"
                   variant="ghost"
-                  className="h-11 w-full rounded-full px-6 text-sm font-medium text-foreground hover:bg-secondary sm:w-auto"
+                  className="h-12 w-full rounded-full px-6 text-sm font-medium text-foreground hover:bg-secondary sm:w-auto"
                 >
-                  <a href="#team">Meet the team</a>
+                  <a href="#features">
+                    Explore features
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
                 </Button>
               </div>
             </Reveal>
 
-            <Reveal delay={320}>
+            <Reveal delay={360}>
               <p className="mt-7 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                Student concept · Polytechnics Mauritius
+                Free APK · Android now, iOS soon
               </p>
             </Reveal>
           </div>
 
-          <Reveal delay={200} direction="right">
-            <div className="mx-auto w-full max-w-[270px] sm:max-w-[300px] lg:max-w-[330px]">
-              <div className="animate-float-slow rounded-[2.2rem] border border-black/10 bg-[#0A2422] p-2 shadow-[0_40px_70px_-45px_rgba(10,20,18,0.55)]">
-                <PhoneScreen />
-              </div>
-            </div>
+          <Reveal delay={200} direction="scale">
+            <SignalRadar />
           </Reveal>
         </div>
 
@@ -173,11 +122,21 @@ export function Hero() {
           {capabilities.map((item) => (
             <div
               key={item}
-              className="bg-background px-4 py-4 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground"
+              className="bg-background px-4 py-4 text-center font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-left"
             >
               {item}
             </div>
           ))}
+        </div>
+
+        <div className="flex justify-center py-8">
+          <a
+            href="#features"
+            className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-primary"
+          >
+            Scroll
+            <ArrowDown className="h-3.5 w-3.5 animate-bounce" />
+          </a>
         </div>
       </div>
     </section>
