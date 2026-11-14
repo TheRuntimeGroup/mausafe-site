@@ -54,7 +54,7 @@ function SceneVisual() {
     <Reveal delay={450} direction="scale">
       <div className="relative h-[360px] sm:h-[460px] lg:h-[540px]">
         <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-          <span>Live 3D / Safety core</span>
+          <span>Live 3D / Mauritius</span>
           <span className="flex items-center gap-2 text-primary">
             <span className="animate-pulse-soft h-2 w-2 rounded-full bg-primary" />
             Online

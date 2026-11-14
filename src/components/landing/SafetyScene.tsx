@@ -1,13 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
-const ringSettings = [
-  { color: "#EA2839", rotation: [0.25, 0.15, 0.2], arc: Math.PI * 1.55 },
-  { color: "#1A206D", rotation: [1.1, 0.5, 1.2], arc: Math.PI * 1.7 },
-  { color: "#FFCE00", rotation: [0.6, 1.25, 2.5], arc: Math.PI * 1.45 },
-  { color: "#00843D", rotation: [1.45, 0.25, 3.7], arc: Math.PI * 1.65 },
-] as const;
-
 function createCheckStroke(
   start: [number, number, number],
   end: [number, number, number],
@@ -30,36 +23,78 @@ function createCheckStroke(
   return mesh;
 }
 
-function createShield() {
+function createFlagTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 768;
+  const context = canvas.getContext("2d");
+  const colors = ["#EA2839", "#1A206D", "#FFCE00", "#00843D"];
+
+  if (context) {
+    colors.forEach((color, index) => {
+      context.fillStyle = color;
+      context.fillRect(0, index * 192, 512, 192);
+    });
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 4;
+  return texture;
+}
+
+function createFlagIsland() {
   const shape = new THREE.Shape();
-  shape.moveTo(0, 1.35);
-  shape.lineTo(1.02, 0.98);
-  shape.lineTo(0.95, 0.05);
-  shape.quadraticCurveTo(0.85, -0.92, 0, -1.35);
-  shape.quadraticCurveTo(-0.85, -0.92, -0.95, 0.05);
-  shape.lineTo(-1.02, 0.98);
+  shape.moveTo(-0.2, 1.45);
+  shape.quadraticCurveTo(0.2, 1.62, 0.45, 1.25);
+  shape.quadraticCurveTo(0.65, 1.05, 0.7, 0.75);
+  shape.quadraticCurveTo(1.02, 0.35, 0.82, -0.05);
+  shape.quadraticCurveTo(0.9, -0.45, 0.55, -0.75);
+  shape.quadraticCurveTo(0.35, -1.3, -0.05, -1.45);
+  shape.quadraticCurveTo(-0.35, -1.5, -0.55, -1.15);
+  shape.quadraticCurveTo(-0.8, -0.95, -0.75, -0.6);
+  shape.quadraticCurveTo(-1.02, -0.25, -0.85, 0.12);
+  shape.quadraticCurveTo(-0.9, 0.55, -0.62, 0.75);
+  shape.quadraticCurveTo(-0.65, 1.15, -0.2, 1.45);
   shape.closePath();
 
   const geometry = new THREE.ExtrudeGeometry(shape, {
-    depth: 0.34,
+    depth: 0.3,
     bevelEnabled: true,
     bevelSegments: 5,
-    bevelSize: 0.09,
-    bevelThickness: 0.09,
-    curveSegments: 24,
+    bevelSize: 0.065,
+    bevelThickness: 0.065,
+    curveSegments: 32,
   });
+
+  const positions = geometry.attributes.position;
+  const uvs = geometry.attributes.uv;
+  for (let i = 0; i < positions.count; i++) {
+    uvs.setXY(
+      i,
+      (positions.getX(i) + 1.15) / 2.3,
+      (positions.getY(i) + 1.65) / 3.3,
+    );
+  }
+  uvs.needsUpdate = true;
   geometry.center();
 
-  const material = new THREE.MeshStandardMaterial({
+  const faceMaterial = new THREE.MeshStandardMaterial({
+    map: createFlagTexture(),
+    metalness: 0.18,
+    roughness: 0.34,
+  });
+  const sideMaterial = new THREE.MeshStandardMaterial({
     color: "#075E35",
     metalness: 0.42,
-    roughness: 0.24,
+    roughness: 0.25,
   });
-  const shield = new THREE.Group();
-  shield.add(new THREE.Mesh(geometry, material));
-  shield.add(createCheckStroke([-0.48, 0.02, 0.3], [-0.12, -0.35, 0.3]));
-  shield.add(createCheckStroke([-0.12, -0.35, 0.3], [0.54, 0.43, 0.3]));
-  return shield;
+
+  const island = new THREE.Group();
+  island.add(new THREE.Mesh(geometry, [faceMaterial, sideMaterial]));
+  island.add(createCheckStroke([-0.4, 0.04, 0.3], [-0.1, -0.27, 0.3]));
+  island.add(createCheckStroke([-0.1, -0.27, 0.3], [0.43, 0.38, 0.3]));
+  return island;
 }
 
 function createContactShadow() {
@@ -141,19 +176,18 @@ export default function SafetyScene() {
     const spin = new THREE.Group();
     tilt.add(spin);
     scene.add(tilt);
-    spin.add(createShield());
+    spin.add(createFlagIsland());
 
-    for (const ring of ringSettings) {
-      const geometry = new THREE.TorusGeometry(1.72, 0.085, 24, 128, ring.arc);
-      const material = new THREE.MeshStandardMaterial({
-        color: ring.color,
-        metalness: 0.5,
-        roughness: 0.22,
-      });
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.rotation.set(ring.rotation[0], ring.rotation[1], ring.rotation[2]);
-      spin.add(mesh);
-    }
+    const platform = new THREE.Mesh(
+      new THREE.CylinderGeometry(1.35, 1.48, 0.08, 64),
+      new THREE.MeshStandardMaterial({
+        color: "#D9D1C2",
+        metalness: 0.3,
+        roughness: 0.45,
+      }),
+    );
+    platform.position.y = -1.79;
+    tilt.add(platform);
 
     scene.add(createContactShadow());
 
@@ -284,7 +318,7 @@ export default function SafetyScene() {
       ref={containerRef}
       className="h-full w-full"
       role="img"
-      aria-label="Interactive 3D MauSafe safety shield with Mauritian color rings"
+      aria-label="Interactive 3D Mauritian flag island with a safety check"
     />
   );
 }
