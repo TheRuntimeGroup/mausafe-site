@@ -1,3 +1,4 @@
+import { Intro } from "@/components/landing/Intro";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { Features } from "@/components/landing/Features";
@@ -8,6 +9,7 @@ import { Footer } from "@/components/landing/Footer";
 const Index = () => {
   return (
     <div className="min-h-screen overflow-x-hidden">
+      <Intro />
       <Navbar />
       <main>
         <Hero />

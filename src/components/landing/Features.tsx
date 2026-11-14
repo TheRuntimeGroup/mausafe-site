@@ -70,15 +70,15 @@ export function Features() {
                 />
                 <div className="grid gap-4 py-8 sm:grid-cols-12 sm:items-start sm:gap-6 sm:py-10">
                   <span
-                    className="font-mono text-xs font-semibold sm:col-span-1"
+                    className="motion-child font-mono text-xs font-semibold [--motion-delay:80ms] sm:col-span-1"
                     style={{ color: feature.accent }}
                   >
                     {feature.number}
                   </span>
-                  <h3 className="text-4xl leading-none text-foreground sm:col-span-4 sm:text-5xl">
+                  <h3 className="motion-child text-4xl leading-none text-foreground [--motion-delay:160ms] sm:col-span-4 sm:text-5xl">
                     {feature.title}
                   </h3>
-                  <div className="sm:col-span-6">
+                  <div className="motion-child [--motion-delay:240ms] sm:col-span-6">
                     <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground sm:text-base">
                       {feature.description}
                     </p>
@@ -87,7 +87,7 @@ export function Features() {
                     </p>
                   </div>
                   <ArrowUpRight
-                    className="hidden h-6 w-6 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 sm:col-span-1 sm:block sm:justify-self-end"
+                    className="motion-child hidden h-6 w-6 [--motion-delay:320ms] sm:col-span-1 sm:block sm:justify-self-end"
                     style={{ color: feature.accent }}
                     strokeWidth={1.75}
                   />

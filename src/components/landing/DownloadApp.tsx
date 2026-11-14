@@ -2,6 +2,7 @@ import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { FlagStripe } from "./FlagStripe";
+import { Magnetic } from "./Magnetic";
 import { APK_URL } from "@/lib/download";
 
 export function DownloadApp() {
@@ -23,16 +24,18 @@ export function DownloadApp() {
             Get the hackathon build on your Android phone and put four safety
             tools within reach.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="mt-7 h-14 w-full rounded-xl bg-white px-7 text-sm font-bold text-[var(--ink)] hover:bg-white/90 sm:w-auto"
-          >
-            <a href={APK_URL}>
-              <Download className="h-5 w-5" />
-              Download APK
-            </a>
-          </Button>
+          <Magnetic className="mt-7 w-full sm:w-auto">
+            <Button
+              asChild
+              size="lg"
+              className="group h-14 w-full rounded-xl bg-white px-7 text-sm font-bold text-[var(--ink)] hover:bg-white/90 sm:w-auto"
+            >
+              <a href={APK_URL}>
+                <Download className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-0.5" />
+                Download APK
+              </a>
+            </Button>
+          </Magnetic>
           <p className="mt-5 max-w-sm text-xs leading-relaxed text-white/65">
             Direct Android download. Allow installs from unknown sources when
             your phone asks. iOS is coming soon.
