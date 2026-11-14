@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
 import { FlagStripe } from "./FlagStripe";
 import { Magnetic } from "./Magnetic";
-import { APK_URL } from "@/lib/download";
+import { APK_URL, APP_URL } from "@/lib/download";
 
 const signals = [
   { id: "scam-check", number: "01", label: "Scam", width: "94%", color: "var(--flag-blue)", text: "#ffffff" },
@@ -105,9 +105,9 @@ export function Hero() {
                     size="lg"
                     className="h-12 w-full rounded-xl px-6 text-sm font-semibold sm:w-auto"
                   >
-                    <a href={APK_URL}>
-                      <Download className="h-4 w-4" />
-                      Download Android APK
+                    <a href={APP_URL} target="_blank" rel="noopener noreferrer">
+                      Try MauSafe online
+                      <ArrowUpRight className="h-4 w-4" />
                     </a>
                   </Button>
                 </Magnetic>
@@ -117,9 +117,9 @@ export function Hero() {
                   variant="outline"
                   className="h-12 w-full rounded-xl border-foreground/20 bg-transparent px-6 text-sm font-semibold hover:bg-secondary sm:w-auto"
                 >
-                  <a href="#features">
-                    How it works
-                    <ArrowUpRight className="h-4 w-4" />
+                  <a href={APK_URL}>
+                    <Download className="h-4 w-4" />
+                    Download APK
                   </a>
                 </Button>
               </div>

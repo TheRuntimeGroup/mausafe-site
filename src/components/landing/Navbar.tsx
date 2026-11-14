@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import { Download, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
 import { FlagStripe } from "./FlagStripe";
+import { APP_URL } from "@/lib/download";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#features", label: "Features" },
   { href: "#team", label: "Team" },
+  { href: "#download", label: "Download" },
 ];
 
 export function Navbar() {
@@ -31,7 +33,7 @@ export function Navbar() {
       )}
     >
       <FlagStripe className="h-1 w-full" />
-      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 sm:px-8">
         <a href="#top" className="flex items-center" aria-label="MauSafe home">
           <Logo />
         </a>
@@ -54,9 +56,9 @@ export function Navbar() {
             size="sm"
             className="hidden h-10 rounded-xl px-4 text-xs font-semibold md:inline-flex"
           >
-            <a href="#download">
-              <Download className="h-4 w-4" />
-              Download APK
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer">
+              Try the app
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           </Button>
 
@@ -86,9 +88,14 @@ export function Navbar() {
             ))}
           </nav>
           <Button asChild className="mt-5 h-12 w-full rounded-xl text-sm font-semibold">
-            <a href="#download" onClick={() => setOpen(false)}>
-              <Download className="h-4 w-4" />
-              Download APK
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+            >
+              Try the app
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           </Button>
         </div>
