@@ -1,50 +1,42 @@
-import { ArrowUpRight, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
+import { FlagStripe } from "./FlagStripe";
 import { APK_URL } from "@/lib/download";
 
 export function DownloadApp() {
   return (
-    <section id="download" className="py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <Reveal direction="scale">
-          <div className="rounded-3xl bg-[#06201F] px-6 py-16 text-center sm:px-12 sm:py-20">
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-teal-300">
-              02 — Download
-            </p>
-            <h2 className="text-balance mx-auto mt-5 max-w-xl text-3xl font-bold leading-tight text-white sm:text-[2.5rem]">
-              Try MauSafe on Android.
-            </h2>
-            <p className="mx-auto mt-5 max-w-md text-[15px] leading-relaxed text-teal-100/75 sm:text-base">
-              Download the hackathon build as an APK and test scam checks,
-              one-tap SOS, safe havens, and call detection on your phone.
-            </p>
+    <section id="download" className="bg-[var(--flag-green)] text-white">
+      <FlagStripe className="h-1.5 w-full" />
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-12 lg:items-end">
+        <Reveal direction="left" className="lg:col-span-8">
+          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/70">
+            Android APK / Free download
+          </p>
+          <h2 className="text-balance mt-5 text-[clamp(2.9rem,6.5vw,5.8rem)] uppercase leading-[0.92]">
+            Ready when it matters.
+          </h2>
+        </Reveal>
 
-            <div className="mt-9 flex justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="h-12 w-full rounded-full bg-white px-7 text-sm font-semibold text-[#06201F] hover:bg-teal-50 sm:w-auto"
-              >
-                <a href={APK_URL}>
-                  <Download className="h-4 w-4" />
-                  Download APK for Android
-                </a>
-              </Button>
-            </div>
-
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.2em] text-teal-200/60">
-              Free download · Android only · iOS coming soon
-            </p>
-
-            <a
-              href="#team"
-              className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-teal-200 transition-colors hover:text-white"
-            >
-              Built by DEAD SIGNAL
-              <ArrowUpRight className="h-4 w-4" />
+        <Reveal direction="right" delay={120} className="lg:col-span-4">
+          <p className="max-w-sm text-base leading-relaxed text-white/80">
+            Get the hackathon build on your Android phone and put four safety
+            tools within reach.
+          </p>
+          <Button
+            asChild
+            size="lg"
+            className="mt-7 h-14 w-full rounded-xl bg-white px-7 text-sm font-bold uppercase tracking-wide text-[var(--ink)] hover:bg-white/90 sm:w-auto"
+          >
+            <a href={APK_URL}>
+              <Download className="h-5 w-5" />
+              Download APK
             </a>
-          </div>
+          </Button>
+          <p className="mt-5 max-w-sm text-xs leading-relaxed text-white/65">
+            Direct Android download. Allow installs from unknown sources when
+            your phone asks. iOS is coming soon.
+          </p>
         </Reveal>
       </div>
     </section>

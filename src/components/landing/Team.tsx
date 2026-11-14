@@ -1,67 +1,65 @@
 import { Reveal } from "./Reveal";
 
 const members = [
-  { name: "Sulakshna Devi Chinniah", role: "Team leader", initials: "SC" },
-  { name: "Vencatasen Vrishni", role: "Team member", initials: "VV" },
-  { name: "Lallbeeharry Kaushal", role: "Team member", initials: "LK" },
-  { name: "Mandhub Divesh", role: "Team member", initials: "MD" },
+  { name: "Sulakshna Devi Chinniah", role: "Team leader" },
+  { name: "Vencatasen Vrishni", role: "Team member" },
+  { name: "Lallbeeharry Kaushal", role: "Team member" },
+  { name: "Mandhub Divesh", role: "Team member" },
 ];
 
 const facts = [
   { label: "Group", value: "DEAD SIGNAL" },
   { label: "Institution", value: "Polytechnics Mauritius" },
-  { label: "Event", value: "24HR Hackathon · Middlesex University" },
+  { label: "Event", value: "Life Powered by Tech" },
+  { label: "Organiser", value: "Middlesex University" },
 ];
 
 export function Team() {
   return (
-    <section id="team" className="pb-16 sm:pb-24">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+    <section id="team" className="bg-white py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-            03 — The team
-          </p>
-          <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-[2.5rem]">
-            Brought to life by DEAD SIGNAL
-          </h2>
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground">
-            A student team from Polytechnics Mauritius, competing in the “Life
-            Powered by Tech” 24-hour hackathon organised by Middlesex
-            University.
-          </p>
-        </Reveal>
-
-        <Reveal delay={100}>
-          <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
-            {facts.map((fact) => (
-              <div key={fact.label} className="bg-white p-6">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                  {fact.label}
-                </span>
-                <p className="mt-2 text-sm font-medium leading-relaxed text-foreground">
-                  {fact.value}
-                </p>
-              </div>
-            ))}
+          <div className="grid gap-5 lg:grid-cols-12 lg:items-end">
+            <h2 className="text-balance text-4xl uppercase leading-[0.95] text-foreground sm:text-6xl lg:col-span-8">
+              Four students. 24 hours.
+            </h2>
+            <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:col-span-4">
+              A Mauritian student team turning one simple idea into a working
+              safety app.
+            </p>
           </div>
         </Reveal>
 
-        <div className="mt-4 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
-          {members.map((member, i) => (
-            <Reveal key={member.name} delay={i * 90} className="bg-white">
-              <article className="h-full p-6">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-secondary font-display text-xs font-semibold text-secondary-foreground">
-                  {member.initials}
-                </span>
-                <h3 className="mt-5 text-sm font-semibold leading-snug text-foreground">
-                  {member.name}
-                </h3>
-                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                  {member.role}
-                </p>
-              </article>
-            </Reveal>
-          ))}
+        <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-8">
+          <Reveal direction="left" className="lg:col-span-4">
+            <div className="border-t border-border">
+              {facts.map((fact) => (
+                <div key={fact.label} className="border-b border-border py-4">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    {fact.label}
+                  </p>
+                  <p className="mt-1.5 text-sm font-semibold text-foreground">
+                    {fact.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <div className="lg:col-span-8">
+            {members.map((member, i) => (
+              <Reveal key={member.name} delay={i * 90} direction="right">
+                <div className="flex items-center justify-between gap-4 border-t border-border py-5 last:border-b sm:py-6">
+                  <h3 className="text-lg font-semibold text-foreground sm:text-xl">
+                    {member.name}
+                  </h3>
+                  <p className="shrink-0 font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                    {member.role}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </div>
     </section>

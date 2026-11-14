@@ -1,65 +1,49 @@
+import { Download } from "lucide-react";
 import { Logo } from "./Logo";
+import { FlagStripe } from "./FlagStripe";
 import { APK_URL } from "@/lib/download";
-
-const columns = [
-  {
-    title: "Explore",
-    links: ["Features", "Team", "Download"],
-    hrefs: ["#features", "#team", "#download"],
-  },
-  {
-    title: "Credits",
-    links: ["DEAD SIGNAL", "Polytechnics Mauritius", "Middlesex University"],
-    hrefs: ["#team", "#team", "#team"],
-  },
-  {
-    title: "Get MauSafe",
-    links: ["Android APK", "Back to top"],
-    hrefs: [APK_URL, "#top"],
-  },
-];
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-          <div>
+      <FlagStripe className="h-1 w-full" />
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
+        <div className="grid gap-10 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-5">
             <Logo />
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              A safety companion concept that scans scams, triggers SOS alerts,
-              maps safe havens, and verifies calls.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+              Four essential safety tools, built by Mauritian students.
             </p>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h4 className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                {col.title}
-              </h4>
-              <ul className="mt-4 space-y-3">
-                {col.links.map((link, i) => (
-                  <li key={link}>
-                    <a
-                      href={col.hrefs[i]}
-                      className="text-sm text-foreground transition-colors hover:text-primary"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div className="flex gap-10 md:col-span-4">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                Explore
+              </p>
+              <div className="mt-3 flex flex-col gap-2 text-sm font-medium">
+                <a href="#features" className="hover:text-primary">Features</a>
+                <a href="#team" className="hover:text-primary">Team</a>
+              </div>
             </div>
-          ))}
+            <a
+              href={APK_URL}
+              className="inline-flex h-fit items-center gap-2 text-sm font-semibold text-primary"
+            >
+              <Download className="h-4 w-4" />
+              Android APK
+            </a>
+          </div>
+
+          <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.14em] text-muted-foreground md:col-span-3 md:text-right">
+            Polytechnics Mauritius
+            <br />
+            Middlesex University · 24HR
+          </p>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 sm:flex-row sm:items-center">
-          <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} MauSafe · DEAD SIGNAL
-          </p>
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            24HR Hackathon · Middlesex University
-          </p>
+        <div className="mt-10 border-t border-border pt-5 text-xs text-muted-foreground">
+          © {new Date().getFullYear()} MauSafe · DEAD SIGNAL
         </div>
       </div>
     </footer>

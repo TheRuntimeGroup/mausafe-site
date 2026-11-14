@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { Download, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Logo } from "./Logo";
+import { FlagStripe } from "./FlagStripe";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#features", label: "Features" },
   { href: "#team", label: "Team" },
-  { href: "#download", label: "Download" },
 ];
 
 export function Navbar() {
@@ -26,48 +26,49 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200",
         scrolled || open
-          ? "border-border bg-background/90 backdrop-blur-md"
-          : "border-transparent bg-transparent",
+          ? "border-border bg-background/95 backdrop-blur-md"
+          : "border-border/60 bg-background/80 backdrop-blur-sm",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
+      <FlagStripe className="h-1 w-full" />
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5 sm:px-8">
         <a href="#top" className="flex items-center" aria-label="MauSafe home">
           <Logo />
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        <div className="flex items-center gap-7">
+          <nav className="hidden items-center gap-7 md:flex">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
-        <div className="hidden md:block">
           <Button
             asChild
             size="sm"
-            className="h-9 rounded-full px-4 text-[13px] font-medium"
+            className="hidden h-10 rounded-xl px-4 text-xs font-semibold md:inline-flex"
           >
             <a href="#download">
-              <Download className="h-3.5 w-3.5" />
+              <Download className="h-4 w-4" />
               Download APK
             </a>
           </Button>
-        </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="-mr-2 inline-flex h-10 w-10 items-center justify-center text-foreground md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="-mr-2 inline-flex h-10 w-10 items-center justify-center text-foreground md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -78,14 +79,15 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-border py-3.5 text-sm font-medium text-foreground last:border-b-0"
+                className="border-b border-border py-4 text-base font-medium text-foreground"
               >
                 {link.label}
               </a>
             ))}
           </nav>
-          <Button asChild className="mt-5 h-10 w-full rounded-full text-sm">
+          <Button asChild className="mt-5 h-12 w-full rounded-xl text-sm font-semibold">
             <a href="#download" onClick={() => setOpen(false)}>
+              <Download className="h-4 w-4" />
               Download APK
             </a>
           </Button>
