@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "./Reveal";
@@ -5,11 +6,13 @@ import { FlagStripe } from "./FlagStripe";
 import { Magnetic } from "./Magnetic";
 import { APK_URL, APP_URL } from "@/lib/download";
 
-const signals = [
-  { id: "scam-check", number: "01", label: "Scam", width: "94%", color: "var(--flag-blue)", text: "#ffffff" },
-  { id: "sos", number: "02", label: "SOS", width: "78%", color: "var(--flag-red)", text: "#ffffff" },
-  { id: "safe-havens", number: "03", label: "Havens", width: "88%", color: "var(--flag-yellow)", text: "var(--ink)" },
-  { id: "call-detection", number: "04", label: "Calls", width: "70%", color: "var(--flag-green)", text: "#ffffff" },
+const SafetyScene = lazy(() => import("./SafetyScene"));
+
+const featureLinks = [
+  { id: "scam-check", label: "Scam", color: "var(--flag-blue)" },
+  { id: "sos", label: "SOS", color: "var(--flag-red)" },
+  { id: "safe-havens", label: "Havens", color: "var(--flag-yellow)" },
+  { id: "call-detection", label: "Calls", color: "var(--flag-green)" },
 ];
 
 function HeroLine({ text, delay = 0, accent = false }: { text: string; delay?: number; accent?: boolean }) {
@@ -31,44 +34,54 @@ function HeroLine({ text, delay = 0, accent = false }: { text: string; delay?: n
   );
 }
 
-function SignalStack() {
+function SceneFallback() {
   return (
-    <div className="mx-auto w-full max-w-[480px] lg:ml-auto">
-      <div className="mb-5 flex items-center justify-between gap-4 border-b border-border pb-4 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-        <span>Safety system / 04 signals</span>
-        <span className="flex items-center gap-2 text-primary">
-          <span className="animate-pulse-soft h-2 w-2 rounded-full bg-primary" />
-          Ready
-        </span>
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="relative h-44 w-44">
+        <span className="animate-pulse-soft absolute inset-0 rounded-full border border-primary/20" />
+        <span className="absolute inset-8 rounded-full border border-primary/30" />
+        <span className="absolute inset-16 rounded-full bg-primary" />
       </div>
-
-      <div className="space-y-3">
-        {signals.map((signal, i) => (
-          <Reveal key={signal.id} delay={700 + i * 140} direction="right">
-            <a
-              href={`#${signal.id}`}
-              className="signal-bar group flex h-14 items-center justify-between gap-3 rounded-xl px-5 transition-[filter] duration-300 hover:brightness-105 sm:h-[68px]"
-              style={{
-                width: signal.width,
-                backgroundColor: signal.color,
-                color: signal.text,
-                animationDelay: `${i * -1.1}s`,
-              }}
-            >
-              <span className="font-mono text-[10px] opacity-70">{signal.number}</span>
-              <span className="flex-1 text-lg font-bold tracking-tight sm:text-xl">
-                {signal.label}
-              </span>
-              <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
-          </Reveal>
-        ))}
-      </div>
-
-      <p className="mt-5 text-right font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
-        Select a signal to explore
-      </p>
+      <span className="absolute bottom-12 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
+        Loading safety core
+      </span>
     </div>
+  );
+}
+
+function SceneVisual() {
+  return (
+    <Reveal delay={450} direction="scale">
+      <div className="relative h-[360px] sm:h-[460px] lg:h-[540px]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+          <span>Live 3D / Safety core</span>
+          <span className="flex items-center gap-2 text-primary">
+            <span className="animate-pulse-soft h-2 w-2 rounded-full bg-primary" />
+            Online
+          </span>
+        </div>
+        <Suspense fallback={<SceneFallback />}>
+          <SafetyScene />
+        </Suspense>
+        <p className="pointer-events-none absolute inset-x-0 bottom-1 text-center font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">
+          Drag to rotate · Move to explore
+        </p>
+      </div>
+
+      <nav aria-label="Explore safety features" className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-3 border-t border-border pt-4">
+        {featureLinks.map((feature, i) => (
+          <a
+            key={feature.id}
+            href={`#${feature.id}`}
+            className="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <span className="h-2 w-2 rounded-full" style={{ backgroundColor: feature.color }} />
+            <span className="opacity-60">0{i + 1}</span>
+            {feature.label}
+          </a>
+        ))}
+      </nav>
+    </Reveal>
   );
 }
 
@@ -85,9 +98,9 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-10">
-          <div className="lg:col-span-7">
-            <h1 className="text-[clamp(3.2rem,9vw,7.8rem)] leading-[0.86] text-foreground">
+        <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-4">
+          <div className="lg:col-span-6">
+            <h1 className="text-[clamp(3.2rem,8vw,7rem)] leading-[0.86] text-foreground">
               <HeroLine text="Your safety," delay={350} />
               <HeroLine text="always on" delay={480} />
               <HeroLine text="signal." delay={610} accent />
@@ -126,12 +139,12 @@ export function Hero() {
             </Reveal>
           </div>
 
-          <div className="lg:col-span-5">
-            <SignalStack />
+          <div className="lg:col-span-6">
+            <SceneVisual />
           </div>
         </div>
 
-        <div className="mt-14 flex items-center justify-between border-t border-border pt-5 sm:mt-20">
+        <div className="mt-10 flex items-center justify-between border-t border-border pt-5 sm:mt-14">
           <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
             Built in Mauritius by DEAD SIGNAL
           </p>
