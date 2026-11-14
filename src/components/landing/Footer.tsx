@@ -23,7 +23,9 @@ export function Footer() {
               </p>
               <div className="mt-3 flex flex-col gap-2 text-sm font-medium">
                 <a href="#features" className="hover:text-primary">Features</a>
+                <a href="#how-it-works" className="hover:text-primary">How it works</a>
                 <a href="#team" className="hover:text-primary">Team</a>
+                <a href="#faq" className="hover:text-primary">FAQ</a>
               </div>
             </div>
             <div className="flex flex-col gap-2 text-sm font-semibold">
